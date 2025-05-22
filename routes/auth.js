@@ -8,17 +8,15 @@ const auth = require('../middleware/auth');
 const validate = require('../middleware/validate');
 const { registerSchema, loginSchema } = require('../validation/schemas');
 
-// Register
+// User registration endpoint
 router.post('/register', validate(registerSchema), async (req, res) => {
     try {
         const { username, email, password } = req.body;
         
-        // Validate input
         if (!username || !email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        // Check if user exists
         const [existingUsers] = await db.query(
             'SELECT * FROM users WHERE email = ? OR username = ?',
             [email, username]
