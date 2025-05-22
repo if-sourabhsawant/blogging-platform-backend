@@ -1,0 +1,761 @@
+{
+	"info": {
+		"_postman_id": "7a8b9c10-d1e2-4f3g-5h6i-7j8k9l0m1n2o",
+		"name": "Blog Platform API",
+		"description": "A collection of API requests for the Blog Platform application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User - Success",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"testuser@example.com\",\n    \"password\": \"Password123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Register a new user with valid credentials"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User - Email Already Exists",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"anotheruser\",\n    \"email\": \"testuser@example.com\",\n    \"password\": \"Password123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Attempt to register with an email that already exists"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User - Username Already Exists",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"another@example.com\",\n    \"password\": \"Password123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Attempt to register with a username that already exists"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User - Invalid Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"t\",\n    \"email\": \"invalid-email\",\n    \"password\": \"short\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Attempt to register with invalid data (short username, invalid email, short password)"
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Success",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"testuser@example.com\",\n    \"password\": \"Password123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login with valid credentials"
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Invalid Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nonexistent@example.com\",\n    \"password\": \"Password123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Attempt to login with an email that doesn't exist"
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Wrong Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"testuser@example.com\",\n    \"password\": \"WrongPassword123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Attempt to login with the wrong password"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication related endpoints"
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get All Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts"
+							]
+						},
+						"description": "Get all posts without authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post by ID - Success",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						},
+						"description": "Get a specific post by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post by ID - Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"999"
+							]
+						},
+						"description": "Attempt to get a post with an ID that doesn't exist"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post - Success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test Post Title\",\n    \"content\": \"<p>This is a test post content with <strong>rich text</strong> formatting.</p>\",\n    \"category\": \"Technology\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts"
+							]
+						},
+						"description": "Create a new post with valid data and authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post - No Authentication",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test Post Title\",\n    \"content\": \"<p>This is a test post content with <strong>rich text</strong> formatting.</p>\",\n    \"category\": \"Technology\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts"
+							]
+						},
+						"description": "Attempt to create a post without authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post - Invalid Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"\",\n    \"content\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts"
+							]
+						},
+						"description": "Attempt to create a post with invalid data (empty title and content)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post - Success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Post Title\",\n    \"content\": \"<p>This is the updated content for the test post.</p>\",\n    \"category\": \"Technology\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						},
+						"description": "Update a post with valid data and authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post - Not Owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{otherUserToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Unauthorized Update\",\n    \"content\": \"<p>This update should fail because the user is not the owner.</p>\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						},
+						"description": "Attempt to update a post that belongs to another user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post - Success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						},
+						"description": "Delete a post with valid authentication and ownership"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post - Not Owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{otherUserToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"2"
+							]
+						},
+						"description": "Attempt to delete a post that belongs to another user"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts/search?q=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "test"
+								}
+							]
+						},
+						"description": "Search for posts containing the word 'test'"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Posts - No Results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/posts/search?q=nonexistentterm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "nonexistentterm"
+								}
+							]
+						},
+						"description": "Search for posts with a term that doesn't exist"
+					},
+					"response": []
+				}
+			],
+			"description": "Blog post related endpoints"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						},
+						"description": "Get the profile of the authenticated user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Profile - No Authentication",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						},
+						"description": "Attempt to get a user profile without authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users/1/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"1",
+								"posts"
+							]
+						},
+						"description": "Get all posts by a specific user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Posts - User Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/users/999/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"999",
+								"posts"
+							]
+						},
+						"description": "Attempt to get posts for a user that doesn't exist"
+					},
+					"response": []
+				}
+			],
+			"description": "User related endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Store the auth token from login response",
+					"if (pm.response.code === 200 && pm.request.url.toString().includes('/api/auth/login')) {",
+					"    var jsonData = pm.response.json();",
+					"    if (jsonData.token) {",
+					"        pm.environment.set('authToken', jsonData.token);",
+					"        console.log('Auth token saved to environment');",
+					"    }",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "otherUserToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
