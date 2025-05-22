@@ -23,13 +23,19 @@ Key features implemented include:
 
 ## AI Assistance
 
-During development, I used AI tools like ChatGPT to help with:
+During development, I used AI tools like ChatGPT and Cascade to help with:
 
 - Setting up the project structure
 - Creating database schemas and models
 - Implementing authentication logic
 - Debugging API endpoints
 - Writing validation middleware
+- Creating comprehensive API documentation
+- Generating the Postman collection for API testing
+- Implementing secure JWT authentication
+- Optimizing database queries
+
+Cascade, an advanced AI coding assistant, was particularly helpful with creating the comprehensive Postman collection that covers all API endpoints with various test cases. It also provided guidance on implementing secure authentication practices and structuring the API for optimal performance and maintainability.
 
 AI assistance helped me create a more robust and secure backend while following best practices.
 
